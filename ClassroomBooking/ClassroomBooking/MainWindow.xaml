@@ -1,0 +1,61 @@
+﻿<Window x:Class="ClassroomBooking.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClassroomBooking"
+        mc:Ignorable="d"
+        Title="Бронирование аудиторий" Height="500" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Бронирование компьютерных аудиторий" 
+                   FontSize="20" 
+                   FontWeight="Bold" 
+                   Margin="0,0,0,20"/>
+
+        <!-- Выбор пользователя -->
+        <StackPanel Grid.Row="1" Margin="0,0,0,15">
+            <TextBlock Text="Пользователь:" Margin="0,0,0,5"/>
+            <ComboBox x:Name="UserComboBox" DisplayMemberPath="Name"/>
+        </StackPanel>
+
+        <!-- Выбор аудитории -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,15">
+            <TextBlock Text="Аудитория:" Margin="0,0,0,5"/>
+            <ComboBox x:Name="RoomComboBox" DisplayMemberPath="Number"/>
+        </StackPanel>
+
+        <!-- Выбор даты и времени -->
+        <StackPanel Grid.Row="3" Margin="0,0,0,20">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Дата:" VerticalAlignment="Center"/>
+                <DatePicker x:Name="BookingDatePicker" Margin="10,0,0,0" Width="150"/>
+
+                <TextBlock Text="Время с:" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                <TextBox x:Name="StartTimeTextBox" Width="60" Margin="10,0,0,0" Text="09:00" VerticalAlignment="Center"/>
+
+                <TextBlock Text="по:" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                <TextBox x:Name="EndTimeTextBox" Width="60" Margin="10,0,0,0" Text="10:30" VerticalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Кнопка бронирования -->
+        <Button Grid.Row="4" Content="Забронировать" Width="150" HorizontalAlignment="Left" Padding="5" Click="BookButton_Click"/>
+
+        <!-- Статус операции -->
+        <TextBlock Grid.Row="5" x:Name="StatusTextBlock" Margin="0,10,0,10" FontWeight="Bold"/>
+
+        <!-- Список существующих бронирований -->
+        <ListBox Grid.Row="6" x:Name="BookingsListBox" Margin="0,10,0,0"/>
+    </Grid>
+</Window>
